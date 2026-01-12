@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bee Group - Powering, Building, and Maintaining with Confidence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .honeycomb-bg {
+            background-image:
+                linear-gradient(rgba(255, 215, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+            background-size: 40px 34.64px;
+            background-position: 0 0, 20px 17.32px;
+        }
+
+        .honeycomb-overlay {
+            position: relative;
+        }
+
+        .honeycomb-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 165, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 165, 0, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hexagon {
+            clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+        }
+
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #FF8C00;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FF8C00;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .floating-bee {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .bee-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FF8C00, #FFD700);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .bee-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        .bee-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #333, transparent);
+        }
+
+        .bee-icon .wing {
+            position: absolute;
+            top: 10px;
+            left: -5px;
+            width: 15px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50% 0 50% 0;
+            transform: rotate(-30deg);
+            animation: flap 2s ease-in-out infinite;
+        }
+
+        .bee-icon .wing:nth-child(2) {
+            left: auto;
+            right: -5px;
+            transform: rotate(30deg);
+        }
+
+        @keyframes flap {
+            0%, 100% { transform: rotate(-30deg); opacity: 0.3; }
+            50% { transform: rotate(0deg); opacity: 0.6; }
+        }
+    </style>
+</head>
+<body class="bg-white honeycomb-bg">
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="bee-icon">
+                        <div class="wing"></div>
+                        <div class="wing"></div>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Bee Group</h1>
+                        <p class="text-xs text-gray-500">Powering, Building, Maintaining</p>
+                    </div>
+                </div>
+
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 font-medium">About</a>
+                    <a href="#electrical" class="nav-link text-gray-700 font-medium">Electrical Services</a>
+                    <a href="#construction" class="nav-link text-gray-700 font-medium">Building Construction</a>
+                    <a href="#maintenance" class="nav-link text-gray-700 font-medium">Maintenance & Repairs</a>
+                    <a href="#accreditations" class="nav-link text-gray-700 font-medium">Accreditations</a>
+                    <a href="#contact" class="nav-link text-gray-700 font-medium">Contact</a>
+                </nav>
+
+                <button class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full font-medium transition-colors duration-300 flex items-center space-x-2">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Request a Quote</span>
+                </button>
+
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center honeycomb-overlay">
+        <div class="absolute inset-0 hero-gradient z-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Powering, Building, and<br>
+                        Maintaining with <span class="text-orange-400">Confidence</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-gray-200 leading-relaxed">
+                        Bee Group provides professional electrical services, full-scale building construction, and dependable maintenance and repair solutions. We deliver every project with a strong focus on safety, sustainability, and long-term reliability.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-medium transition-colors duration-300 flex items-center justify-center space-x-2">
+                            <i class="fas fa-cogs"></i>
+                            <span>Our Services</span>
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-gray-800 transition-colors duration-300 flex items-center justify-center space-x-2">
+                            <i class="fas fa-envelope"></i>
+                            <span>Get a Quote</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-200">Fully Accredited & Certified</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-200">Safety-First Operations</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-leaf text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-200">Sustainable Building Practices</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="floating-bee absolute -top-10 -right-10 z-20">
+                        <div class="bee-icon">
+                            <div class="wing"></div>
+                            <div class="wing"></div>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                         alt="Engineers working on electrical installation"
+                         class="rounded-2xl shadow-2xl w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 gradient-bg">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">
+                        About <span class="text-orange-500">Bee Group</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8">
+                        A trusted partner for safe, sustainable, and professional building solutions.
+                    </p>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-lg mb-8">
+                        <div class="bg-orange-500 text-white p-6 rounded-xl mb-6">
+                            <h3 class="text-2xl font-bold mb-2">Bee Fun Fact</h3>
+                            <p class="text-lg">Bees work collaboratively to build strong, efficient structures—just like our project teams on every site.</p>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            Bee Group is a multidisciplinary contractor specialising in electrical services, building construction, and ongoing maintenance and repairs. We support commercial and residential clients with reliable workmanship, certified expertise, and well-managed project delivery.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mt-4">
+                            Sustainability and health and safety are central to how we work. From responsible material choices to efficient systems and structured risk management, Bee Group is committed to protecting people, property, and the environment.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="hexagon overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1426&q=80"
+                             alt="Team meeting"
+                             class="w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    Our <span class="text-orange-500">Core Services</span>
+                </h2>
+                <p class="text-xl text-gray-600">Three specialist service lines. One reliable partner.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Electrical Services -->
+                <div class="service-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Electrical installation"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Electrical Services</h3>
+                        <p class="text-gray-600 mb-6">
+                            Our certified electricians deliver safe, compliant, and energy-efficient electrical solutions tailored to each project’s requirements. From installations to inspections, we ensure dependable performance and regulatory compliance.
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">Commercial and industrial installations</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">Electrical testing and certification</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">Energy-efficient systems</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">Planned and reactive maintenance</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-full font-medium transition-colors duration-300 flex items-center justify-center space-x-2">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Learn More</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Building Construction -->
+                <div class="service-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Building construction"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Building Construction</h3>
+                        <p class="text-gray-600 mb-6">
+                            Bee Group manages construction projects from initial groundwork to final delivery. Our structured approach ensures quality workmanship, safety compliance, and timely completion.
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">New builds and extensions</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">Structural works</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">Project coordination</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">Regulatory compliance</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-full font-medium transition-colors duration-300 flex items-center justify-center space-x-2">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Learn More</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Maintenance & Repairs -->
+                <div class="service-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Maintenance work"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Maintenance & Repairs</h3>
+                        <p class="text-gray-600 mb-6">
+                            We provide responsive and preventative maintenance services to keep buildings operational, safe, and compliant throughout their lifecycle.
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">Planned maintenance programs</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">Emergency repairs</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">Safety inspections</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-orange-500"></i>
+                                <span class="text-gray-600">Long-term asset care</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-full font-medium transition-colors duration-300 flex items-center justify-center space-x-2">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Learn More</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accreditations Section -->
+    <section id="accreditations" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">
+                        Accreditations &<br>
+                        <span class="text-orange-500">Professional Training</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Our accreditations demonstrate Bee Group’s commitment to quality, safety, and professional standards. Continuous training ensures our team remains fully compliant and up to date with industry best practices.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">NAPIT</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">Constructionline Gold</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">Once For All</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">SSIP</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">PASMA</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">City & Guilds</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="flex items-center space-x-4">
+                            <div class="bee-icon">
+                                <div class="wing"></div>
+                                <div class="wing"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-800">Bee Fun Fact</h4>
+                                <p class="text-gray-600">A beehive operates with precision and standards—just like accredited construction teams.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="hexagon overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Team training session"
+                             class="w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    Why <span class="text-orange-500">Choose Bee Group</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-orange-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Safety First</h3>
+                    <p class="text-gray-600">Strict health and safety procedures on every project.</p>
+                </div>
+
+                <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-certificate text-orange-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Fully Accredited</h3>
+                    <p class="text-gray-600">Recognised certifications for complete peace of mind.</p>
+                </div>
+
+                <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-leaf text-orange-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Sustainable Approach</h3>
+                    <p class="text-gray-600">Responsible building practices and efficient systems.</p>
+                </div>
+
+                <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-orange-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Reliable Delivery</h3>
+                    <p class="text-gray-600">Transparent communication and dependable timelines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-16">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                        Recent <span class="text-orange-500">Projects</span>
+                    </h2>
+                    <p class="text-xl text-gray-600">A snapshot of our work across electrical, construction, and maintenance services.</p>
+                </div>
+                <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-medium transition-colors duration-300 flex items-center space-x-2">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>View All Projects</span>
+                </button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Commercial electrical fit-out"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Commercial Electrical Fit-Out</h3>
+                        <p class="text-gray-600 text-sm">Full electrical installation for a new office space including lighting, power distribution, and data cabling.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Office building extension"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Office Building Extension</h3>
+                        <p class="text-gray-600 text-sm">Structural extension and fit-out for a growing business, including electrical, plumbing, and HVAC installations.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Planned maintenance program"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Planned Maintenance Programme</h3>
+                        <p class="text-gray-600 text-sm">Comprehensive maintenance plan for a commercial property including electrical testing, HVAC servicing, and fire safety checks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">
+                        Get in <span class="text-orange-500">Touch</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Looking for a reliable contractor? Contact Bee Group today to discuss your project requirements. Our team is ready to provide expert guidance and professional solutions.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-orange-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Phone</h3>
+                                <p class="text-gray-600">01234 567 890</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-orange-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Email</h3>
+                                <p class="text-gray-600">info@beegroup.co.uk</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-orange-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Location</h3>
+                                <p class="text-gray-600">Unit 1, Industrial Estate,<br>Bee Street, London, SE1 2AB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Name</label>
+                                <input type="text" placeholder="Your name"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" placeholder="Your email"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none">
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Phone</label>
+                                <input type="tel" placeholder="Your phone number"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Service Required</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none">
+                                    <option value="">Select a service</option>
+                                    <option value="electrical">Electrical Services</option>
+                                    <option value="construction">Building Construction</option>
+                                    <option value="maintenance">Maintenance & Repairs</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea rows="5" placeholder="Your message"
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-full font-medium transition-colors duration-300 flex items-center justify-center space-x-2">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Submit Enquiry</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="bee-icon">
+                            <div class="wing"></div>
+                            <div class="wing"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Bee Group</h3>
+                            <p class="text-sm text-gray-400">Powering, Building, Maintaining</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Professional electrical, construction, and maintenance services delivered with safety, sustainability, and reliability at the core.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="#accreditations" class="text-gray-400 hover:text-white transition-colors duration-300">Accreditations</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors duration-300">About</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#electrical" class="text-gray-400 hover:text-white transition-colors duration-300">Electrical Services</a></li>
+                        <li><a href="#construction" class="text-gray-400 hover:text-white transition-colors duration-300">Building Construction</a></li>
+                        <li><a href="#maintenance" class="text-gray-400 hover:text-white transition-colors duration-300">Maintenance & Repairs</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Details</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Phone</p>
+                                <p class="text-gray-400 text-sm">01234 567 890</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Email</p>
+                                <p class="text-gray-400 text-sm">info@beegroup.co.uk</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Location</p>
+                                <p class="text-gray-400 text-sm">Unit 1, Industrial Estate,<br>Bee Street, London, SE1 2AB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© Bee Group. All Rights Reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            const nav = document.querySelector('nav');
+
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    nav.classList.toggle('hidden');
+                });
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Header background on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('bg-white');
+                    header.classList.remove('bg-white/95');
+                } else {
+                    header.classList.add('bg-white/95');
+                    header.classList.remove('bg-white');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
